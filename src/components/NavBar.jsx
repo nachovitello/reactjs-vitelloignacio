@@ -4,12 +4,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
+
 
 const NavBar = () => {
     return (
         <div><Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">Radiadores Centro</Navbar.Brand>
+          <Link to='/'>Radiadores Centro</Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
