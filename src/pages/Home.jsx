@@ -1,11 +1,10 @@
-import ItemListContainer from "../components/ItemListContainer";
+import ItemListContainer from '../components/ItemListContainer'; 
+import { useGetProducts } from '../hooks/useProducts';
 
- export const Home = () => {
-  return (
-    <div>
-      <ItemListContainer/>
-    </div>
-  )
-}
+const Home = () => {
+  const { productsData } = useGetProducts(15);
 
-export default Home
+  return <ItemListContainer productsData={productsData} />
+};
+
+export default Home;

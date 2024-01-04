@@ -2,18 +2,17 @@ import { useEffect, useState } from 'react';
 import { getProducts } from "../services";
 
 export const useGetProducts = () => {
-    const [productsData, setProductsData]= useState([]);
+    const [productsData, setProductsData] = useState([]);
 
-    useEffect (() => {
-        getProducts(5)
+    useEffect(() => {
+        getProducts()
         .then((response) => {
-          setProductData(response.data.products);
+            setProductsData(response.data.products);
         })
-        .catch((error) =>{
-          console.log(error);
-        })
-    
-      }, [] );
+        .catch((error) => {
+            console.log(error);
+        });
+    }, []);
 
-      return { productsData }
-}
+    return { productsData };
+};

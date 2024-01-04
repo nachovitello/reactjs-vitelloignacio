@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 
 export const ItemListContainer = ({ productsData }) => {
     return(
-        <div style={{fontWeight: 'bold', fontSize: '30px', widht: '100vw', height: '50vh', textAlign: 'center'}}> 
-            {productsData.map(products => {
+        <div style={{fontWeight: 'bold', fontSize: '30px', width: '100vw', height: '50vh', textAlign: 'center'}}> 
+            {productsData.map((products) => {
                 return (
                     <Card key={products.id} style={{ width: "15rem" }} >
-                     <Link to={'/item/${products.id}'}>
+                     <Link to={`/item/${products.id}`}>
                      <Card.img variant="top" src={products.thumbnail} />
                      </Link>
                      <Card.Body>
