@@ -5,35 +5,36 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
+import { useCategory } from '../hooks/useCategory';
 
 
 const NavBar = () => {
-    return (
-        <div><Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Link to='/'>Radiadores Centro</Link>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Repuestos Livianos</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Repuestos Pesados
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Accesorios</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-          <CartWidget/>
-        </Container>
-      </Navbar></div>
-    )
+
+    const { category } = useCategory(); 
+
+    return(
+        <Navbar expand="lg" className="bg-body-tertiary">
+    <Container>
+        <Link to='/'>CipherTech</Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Categorias" id="basic-nav-dropdown">
+            {
+                category.map((item, index) => {
+                return <NavDropdown.Item key={index} >
+                    <Link to={`category/${item}`}>{item}</Link>
+                </NavDropdown.Item>;
+                })
+            }
+            </NavDropdown>
+        </Nav>
+        </Navbar.Collapse>
+        <CartWidget/>
+    </Container>
+    </Navbar>
+    );
 }
 
-export default NavBar
+export default NavBar;
