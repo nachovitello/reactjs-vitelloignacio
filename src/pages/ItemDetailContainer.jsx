@@ -2,6 +2,8 @@ import Card from 'react-bootstrap/Card';
 import { useGetProductById } from '../hooks/useProducts';
 import Button  from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
+import ItemCount from '../components/ItemCount';
+
 
 const ItemDetailContainer = () => {
 
@@ -18,7 +20,7 @@ const ItemDetailContainer = () => {
                         {productData?.description}
                     </Card.Text>
                     <div>{productData?.price}</div>
-                    <Button variant="primary">Go somewhere</Button>
+                    <ItemCount productId={productData?.id} />
                 </Card.Body>
                 </Card>
     )
